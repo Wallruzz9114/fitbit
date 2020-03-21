@@ -1,3 +1,4 @@
+import 'package:fitbit/src/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -48,16 +49,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
   ];
 
+  void gotoHomeScreen() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute<HomeScreen>(
+          builder: (BuildContext context) => const HomeScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IntroductionScreen(
         pages: onboardingPages,
         onDone: () {
-          // When done button is press
+          gotoHomeScreen();
         },
         onSkip: () {
-          // You can also override onSkip callback
+          gotoHomeScreen();
         },
         showSkipButton: true,
         skip: const Icon(
