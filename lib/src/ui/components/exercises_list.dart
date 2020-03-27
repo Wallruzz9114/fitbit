@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitbit/src/models/excercise.dart';
 import 'package:fitbit/src/ui/screens/start_exercice_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,13 +32,21 @@ class ExercisesList extends StatelessWidget {
                         children: <Widget>[
                           ClipRRect(
                             borderRadius: BorderRadius.circular(16),
-                            child: FadeInImage(
-                              placeholder: const AssetImage(
-                                  'assets/images/placeholder.jpg'),
-                              image: NetworkImage(exercise.thumbnail),
-                              width: MediaQuery.of(context).size.width,
-                              height: 250,
+                            child: CachedNetworkImage(
+                              imageUrl: exercise.thumbnail,
+                              placeholder: (BuildContext context, String url) =>
+                                  Image(
+                                image: NetworkImage(exercise.thumbnail),
+                                width: MediaQuery.of(context).size.width,
+                                height: 250,
+                                fit: BoxFit.cover,
+                              ),
+                              errorWidget: (BuildContext context, String url,
+                                      Object error) =>
+                                  Icon(Icons.error),
                               fit: BoxFit.cover,
+                              height: 250,
+                              width: MediaQuery.of(context).size.width,
                             ),
                           ),
                           ClipRRect(
