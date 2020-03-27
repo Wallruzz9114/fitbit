@@ -1,7 +1,7 @@
 class Exercise {
   Exercise({this.id, this.title, this.thumbnail, this.gif, this.seconds});
 
-  Exercise.fromJson(Map<String, dynamic> data)
+  Exercise.fromJson(dynamic data)
       : id = data['id'] as String,
         title = data['title'] as String,
         thumbnail = data['thumbnail'] as String,

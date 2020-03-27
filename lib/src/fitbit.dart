@@ -6,9 +6,14 @@ class Fitbit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingScreen(),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: Color(0xFF192a56),
+        ),
+      ),
+      home: const OnboardingScreen(),
     );
   }
 }
